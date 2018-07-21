@@ -18,7 +18,7 @@ export class PurchaseOptionService {
       this.http.get<Array<Result>>(productUrl).subscribe(result => {
         const products = Array<PurchaseOption>();
         for (const product of result) {
-          products.push(new PurchaseOption(product.cacheAmount, product.priceUSD, product.coinbaseProductId,
+          products.push(new PurchaseOption(product.tokenAmount, product.priceEUR, product.coinbaseProductId,
             product._id, product.isEnabled, this.tokenUrl));
         }
         obs.next(products);
@@ -32,8 +32,8 @@ export class PurchaseOptionService {
 
 interface Result {
   _id: string;
-  priceUSD: number;
-  cacheAmount: number;
+  priceEUR: number;
+  tokenAmount: number;
   coinbaseProductId: string;
   isEnabled: boolean;
 }
