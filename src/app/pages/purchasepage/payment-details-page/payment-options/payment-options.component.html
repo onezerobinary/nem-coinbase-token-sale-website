@@ -1,8 +1,8 @@
 <div class="payment-options-wrapper">
   <h3>Select a payment option:</h3>
   <div class="btn-group" role="group" aria-label="Basic example">
-    <div class="tab-wrapper disabled" [class.active]="isSelected(paymentType.usd)">
-      <div class="tabs">USD<br/>(Coming Soon)</div>
+    <div class="tab-wrapper disabled" [class.active]="isSelected(paymentType.eur)">
+      <div class="tabs">EUR<br/>(Coming Soon)</div>
       <img src="../../../../../assets/usd-icon.svg" alt="">
     </div>
     <div class="tab-wrapper" [class.active]="isSelected(paymentType.coinbase)" (click)="setTab(paymentType.coinbase)">
@@ -15,17 +15,22 @@
     </div>
   </div>
   <div class="options-container" [ngSwitch]="tab">
-    <app-usd [ngSwitch]="tab"
-             *ngSwitchCase="paymentType.usd"
-             [cacheAmount]="cacheAmount"
-             [recipientAddress]="recipientAddress"></app-usd>
+    <app-eur [ngSwitch]="tab"
+             *ngSwitchCase="paymentType.eur"
+             [tokenAmount]="tokenAmount"
+             [recipientAddress]="recipientAddress"
+    ></app-eur>
+    <!--<app-usd [ngSwitch]="tab"-->
+             <!--*ngSwitchCase="paymentType.usd"-->
+             <!--[tokenAmount]="tokenAmount"-->
+             <!--[recipientAddress]="recipientAddress"></app-usd>-->
     <app-kyc-form [ngSwitch]="tab"
                   *ngSwitchCase="paymentType.coinbase"
-                  [cacheAmount]="cacheAmount"
+                  [tokenAmount]="tokenAmount"
                   [recipientAddress]="recipientAddress"
                   (complianceSent)="onComplianceSent(paymentType.coinbase)"></app-kyc-form>
     <app-kyc-form [ngSwitch]="tab" *ngSwitchCase="paymentType.wallet"
-                  [cacheAmount]="cacheAmount"
+                  [tokenAmount]="tokenAmount"
                   [recipientAddress]="recipientAddress"
                   (complianceSent)="onComplianceSent(paymentType.wallet)"></app-kyc-form>
   </div>

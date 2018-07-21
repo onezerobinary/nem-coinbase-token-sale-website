@@ -36,7 +36,7 @@ export class PurchaseSummaryComponentComponent {
 
   purchaseClicked = () => {
     const navigationExtras: NavigationExtras = {queryParams: {}};
-    navigationExtras.queryParams[QUERY_PARAMS.CACHE_AMOUNT] = this.product.numTokens;
+    navigationExtras.queryParams[QUERY_PARAMS.TOKEN_AMOUNT] = this.product.numTokens;
     navigationExtras.queryParams[QUERY_PARAMS.ADDRESS] = this._walletAddress;
     navigationExtras.queryParams[QUERY_PARAMS.PRODUCT] = this.product.id;
     this.route.navigate([ROUTES.PURCHASE_DETAILS], navigationExtras);

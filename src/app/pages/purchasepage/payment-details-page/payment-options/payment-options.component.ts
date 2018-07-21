@@ -7,7 +7,7 @@ import { PaymentType } from './payment-type.enum';
   styleUrls: ['./payment-options.component.scss']
 })
 export class PaymentOptionsComponent implements OnInit {
-  @Input() cacheAmount = 0;
+  @Input() tokenAmount = 0;
   @Input() productId = '';
   @Input() recipientAddress = 'No Address Provided';
   @Output() complianceSent = new EventEmitter<PaymentType>();

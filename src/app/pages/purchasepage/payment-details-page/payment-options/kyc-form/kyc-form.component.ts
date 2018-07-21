@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class KycFormComponent {
 
-  @Input() cacheAmount = 0;
+  @Input() tokenAmount = 0;
   @Input() recipientAddress = 'No Address Supplied';
   @Output() complianceSent = new EventEmitter<void>();
 

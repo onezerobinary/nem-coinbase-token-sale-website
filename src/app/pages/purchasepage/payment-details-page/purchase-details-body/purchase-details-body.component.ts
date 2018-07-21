@@ -13,7 +13,7 @@ import { PaymentType } from '../payment-options/payment-type.enum';
 })
 export class PurchaseDetailsBodyComponent implements OnInit {
   private _recipientAddress: string;
-  private _cacheAmount: number;
+  private _tokenAmount: number;
   private _transferCurrency = PaymentOption.XEM;
   private _productId = '';
   private _remainingMin = 0;
@@ -57,7 +57,7 @@ export class PurchaseDetailsBodyComponent implements OnInit {
   };
 
   get recipientAddress(): string { return this._recipientAddress; }
-  get cacheAmount(): number { return this._cacheAmount; }
+  get tokenAmount(): number { return this._tokenAmount; }
 
   constructor(private activatedRoute: ActivatedRoute,
               private ps: PurchaseOptionService,
@@ -79,6 +79,9 @@ export class PurchaseDetailsBodyComponent implements OnInit {
         break;
       case PaymentType.usd:
         this._state = PurchaseState.buyingWithUSD;
+        break;
+      case PaymentType.eur:
+      this._state = PurchaseState.buyingWithEUR;
         break;
       case PaymentType.coinbase:
         this._state = PurchaseState.buyingWithCoinbase;
@@ -106,7 +109,7 @@ export class PurchaseDetailsBodyComponent implements OnInit {
   private fetchQueryParams = () => {
     this.activatedRoute.queryParams.subscribe(params => {
       this._recipientAddress = params[QUERY_PARAMS.ADDRESS];
-      this._cacheAmount = params[QUERY_PARAMS.CACHE_AMOUNT] as number;
+      this._tokenAmount = params[QUERY_PARAMS.TOKEN_AMOUNT] as number;
       this._productId = params[QUERY_PARAMS.PRODUCT];
     });
   }
@@ -140,5 +143,6 @@ enum PurchaseState {
   buyingWithWallet,
   buyingWithCoinbase,
   buyingWithUSD,
+  buyingWithEUR,
   filingKYC
 }

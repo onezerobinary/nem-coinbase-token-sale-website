@@ -5,6 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './usd.component.html',
   styleUrls: ['./usd.component.scss']
 })
+
 export class UsdComponent {
 
   @Input() cacheAmount = 0;

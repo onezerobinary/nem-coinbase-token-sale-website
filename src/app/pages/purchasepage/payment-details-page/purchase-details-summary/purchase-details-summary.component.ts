@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class PurchaseDetailsSummaryComponent {
 
-  @Input() cacheAmount = 0;
+  @Input() tokenAmount = 0;
   @Input() recipientAddress = 'No Address Provided';
 
 }

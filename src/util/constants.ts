@@ -53,6 +53,6 @@ export const API_URLS = {
 
 export const QUERY_PARAMS = {
   PRODUCT: 'product',
-  CACHE_AMOUNT: 'cache',
+  TOKEN_AMOUNT: 'token',
   ADDRESS: 'address'
 };

@@ -9,7 +9,7 @@ import { PaymentOption } from '../../../../../services/payment-manager/payment-o
 })
 export class CoinbaseComponent {
 
-  @Input() cacheAmount = 0;
+  @Input() tokenAmount = 0;
   @Input() recipientAddress = 'No Address Supplied';
   @Input() productId = '';
   @Output() cancelClicked = new EventEmitter<void>();

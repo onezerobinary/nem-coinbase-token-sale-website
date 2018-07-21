@@ -9,7 +9,7 @@ import { PurchaseOptionService } from '../../../../../../services/purchase-optio
 })
 export class ComplianceFormComponent {
 
-  @Input() cacheAmount = 0;
+  @Input() tokenAmount = 0;
   @Input() recipientAddress = 'No Address Supplied';
   @Output() complianceFormSent = new EventEmitter<void>();
   @ViewChild('video') video: ElementRef;
