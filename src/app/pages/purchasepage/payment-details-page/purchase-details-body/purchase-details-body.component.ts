@@ -94,7 +94,7 @@ export class PurchaseDetailsBodyComponent implements OnInit {
       case 'XEM':
       default:
         this.paymentManager.attemptPayment(this._transferCurrency, this._productId, this._recipientAddress).subscribe(res => {
-          this._copyAddress = res.cacheAddress;
+          this._copyAddress = res.tokenAddress;
           this._copyAmount = res.xemAmount;
           this._copyMessage = res.message;
           this._showingTransferInfo = true;

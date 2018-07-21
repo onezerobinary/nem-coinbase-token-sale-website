@@ -37,7 +37,7 @@ export class PaymentManagerService {
   private payCoinbase = (product: string, address: string): Observable<string> => {
     return Observable.create(observable => {
       const body = {
-        senderCacheAddress: address,
+        tokenRecipientAddress: address,
         productId: product
       };
       const paymentUrl = `${environment.api_url}${API_URLS.START_COINBASE_PURCHASE}`;
@@ -52,14 +52,16 @@ export class PaymentManagerService {
   private payXEM = (product: string, walletAddress: string): Observable<XemPaymentDetails> => {
     return Observable.create(observable => {
       const body = {
-        senderCacheAddress: walletAddress,
+        tokenRecipientAddress: walletAddress,
         productId: product,
         tokenType: 'XEM'
       };
       const paymentApiUrl = `${environment.api_url}${API_URLS.XEM_PAYMENT}`;
-      this.http.post<{cacheAddress: string, usdValue: number, xemAmount: number, message: string}>(paymentApiUrl, body)
+      this.http.post<{tokenRecipientAddress: string, usdValue: number,
+        eurValue: number,  xemAmount: number, message: string}>(paymentApiUrl, body)
         .subscribe(result => {
-        const newInfo = new XemPaymentDetails(result.cacheAddress, result.usdValue, result.xemAmount, result.message);
+        const newInfo = new XemPaymentDetails(result.tokenRecipientAddress, result.eurValue,
+          result.usdValue, result.xemAmount, result.message);
         observable.next(newInfo);
       }, err => {
         observable.error(err);
@@ -77,13 +79,13 @@ export class PaymentManagerService {
       formData.append('state', infoSheet.state);
       formData.append('zipCode', infoSheet.zipCode);
       formData.append('country', infoSheet.country);
-      formData.append('senderCacheAddress', infoSheet.senderCacheAddress);
+      formData.append('tokenRecipientAddress', infoSheet.tokenRecipientAddress);
       formData.append('proofOfResidencePath', infoSheet.proofOfResidencePath,
-                    `${infoSheet.senderCacheAddress}-${infoSheet.proofOfResidencePath.name}`);
+                    `${infoSheet.tokenRecipientAddress}-${infoSheet.proofOfResidencePath.name}`);
       formData.append('legalPhotoIdPath', infoSheet.photoIdPath,
-                    `${infoSheet.senderCacheAddress}-${infoSheet.photoIdPath.name}`);
+                    `${infoSheet.tokenRecipientAddress}-${infoSheet.photoIdPath.name}`);
       formData.append('personalPictureHoldingIdPath', infoSheet.photoWithIdPath,
-                    `${infoSheet.senderCacheAddress}-${infoSheet.photoWithIdPath.name}`);
+                    `${infoSheet.tokenRecipientAddress}-${infoSheet.photoWithIdPath.name}`);
 
       const kycUrl = `${environment.api_url}${API_URLS.KYC}`;
       this.http.put(kycUrl, formData).subscribe(res => {
@@ -103,7 +105,7 @@ export interface KycInfoSheet {
   state: string;
   zipCode: string;
   country: string;
-  senderCacheAddress: string;
+  tokenRecipientAddress: string;
   photoWithIdPath: any;
   photoIdPath: File;
   proofOfResidencePath: File;

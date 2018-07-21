@@ -114,7 +114,7 @@ export class ComplianceFormComponent {
       state: this.inputState,
       zipCode: this.inputZip,
       country: this.selectCountry,
-      senderCacheAddress: this.recipientAddress,
+      tokenRecipientAddress: this.recipientAddress,
       photoWithIdPath: this.photoWithId,
       photoIdPath: this.photoId,
       proofOfResidencePath: this.proofOfRes,
