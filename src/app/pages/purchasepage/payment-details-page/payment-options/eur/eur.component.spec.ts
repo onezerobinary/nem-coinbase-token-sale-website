@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UsdComponent } from './usd.component';
+import { EurComponent } from './eur.component';
 
-describe('UsdComponent', () => {
-  let component: UsdComponent;
-  let fixture: ComponentFixture<UsdComponent>;
+describe('EurComponent', () => {
+  let component: EurComponent;
+  let fixture: ComponentFixture<EurComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UsdComponent ]
+      declarations: [ EurComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UsdComponent);
+    fixture = TestBed.createComponent(EurComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
