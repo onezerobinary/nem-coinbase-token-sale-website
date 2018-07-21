@@ -11,7 +11,7 @@ export class ProgressBarService {
 
   public retrieveProgress = (): Observable<ProgressReport> => {
     return Observable.create(observable => {
-      const url = `${environment.api_url}${API_URLS.PROGRESS_BAR}usd`;
+      const url = `${environment.api_url}${API_URLS.PROGRESS_BAR}eur`;
       this.http.get<ProgressReport>(url).subscribe(res => {
         observable.next(res);
       }, err => {
