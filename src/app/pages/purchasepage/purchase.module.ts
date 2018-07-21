@@ -13,6 +13,7 @@ import { PurchaseDetailsSummaryComponent } from './payment-details-page/purchase
 import { PurchaseDetailsBodyComponent } from './payment-details-page/purchase-details-body/purchase-details-body.component';
 import { PaymentOptionsComponent } from './payment-details-page/payment-options/payment-options.component';
 import { UsdComponent } from './payment-details-page/payment-options/usd/usd.component';
+import { EurComponent } from './payment-details-page/payment-options/eur/eur.component';
 import { CoinbaseComponent } from './payment-details-page/payment-options/coinbase/coinbase.component';
 import { KycFormComponent } from './payment-details-page/payment-options/kyc-form/kyc-form.component';
 import { CoinbaseIconsComponent } from './payment-details-page/payment-options/coinbase-icons/coinbase-icons.component';
@@ -39,6 +40,7 @@ import { PopupPaymentFieldsComponent } from './payment-details-page/popup-paymen
     PurchaseDetailsBodyComponent,
     PaymentOptionsComponent,
     UsdComponent,
+    EurComponent,
     CoinbaseComponent,
     KycFormComponent,
     CoinbaseIconsComponent,
